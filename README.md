@@ -1,3 +1,5 @@
+# Git Bootcamp
+
 ## Local Setup
 
 ### Installation and configuration (local)
