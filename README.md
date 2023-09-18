@@ -1,8 +1,17 @@
 # Git Bootcamp
 
+- [Git Bootcamp](#git-bootcamp)
+  - [Local Setup](#local-setup)
+    - [Installation and configuration](#installation-and-configuration)
+    - [Making your first commit](#making-your-first-commit)
+  - [Track your repository on GitHub](#track-your-repository-on-github)
+    - [Git vs. GitHub](#git-vs-github)
+    - [GitHub Setup](#github-setup)
+    - [Create a new remote repository](#create-a-new-remote-repository)
+
 ## Local Setup
 
-### Installation and configuration (local)
+### Installation and configuration
 
 First, check if `git` is installed on your machine by running the following command.
 ```bash
@@ -21,7 +30,7 @@ The `git dag` command is more user friendly than the original `git log` command.
 $ git config --global alias.dag "log --graph --abbrev-commit --decorate --format=format:'%C(blue)%h%C(reset) - %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)%C(yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(white)- %an%C(reset)' --all"
 ```
 
-### Making your first commit (local)
+### Making your first commit
 
 Then `cd` into the root directory of your project. For instance, if my project folder is `git-bootcamp`, I would do
 ```bash
@@ -45,6 +54,48 @@ $ git add -A
 $ git commit -s -m "initial commit"
 ```
 
+Great! Congratulations on your first commit!
 
+## Track your repository on GitHub
 
+### Git vs. GitHub
 
+Now we are going to push your commits to GitHub. First, note that git is a version control system that lets you manage and keep track of your source code history, while GitHub is a cloud-based hosting service that lets you manage Git repositories. Thus, it is totally possible to only use git locally without even touching GitHub. There are many benefits of using GitHub, things include:
+- backup files from local drive
+- enable collaboration between teammates
+- share code with rest of open-source community
+- better UI
+- better issue tracking and CI/CD
+
+### GitHub Setup 
+
+To get started, make sure you have a GitHub account. Once you logged in, we want create a personal access token for authentication purposes. Please follow the instructions on [this page](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) to generate your personal access token. Once your token is generated, you should store it somewhere because you won't be able to see it again. To setup credential caching, you can do the following:
+
+```bash
+$ git config --global credential.helper store
+```
+
+Alternatively, see here for instructions on all platforms.
+
+### Create a new remote repository
+
+Go to https://github.com/new to create a new repository by following the instructions.
+
+**Note:** Since we already have a repository locally,  do not add README, license, or `.gitignore` files. **If you don't want to or cannot (for academic reason) share the code with public, make sure you select the "Private" option for the visibility.**
+
+Then follow the instructions on the redirected page to link your local repository with the one on GitHub. In our case, we run
+
+```bash
+$ git remote add origin https://github.com/<github_username>/<project_name>.git
+$ git branch -M main
+$ git push -u origin main
+```
+
+You might see the GitHub ask you for your username and password. You should use your personal access token in the keyword field. After you enter your credentials once, the credential caching should work and you won't need to retype the token again.
+
+```bash
+Username: YOUR_GITHUB_USERNAME
+Password: YOUR_PERSONAL_ACCESS_TOKEN
+```
+
+Now go to `https://github.com/<github_username>/<project_name>.git`, you would see your changes appear in the remote repository. Congrats, you have setup your project on GitHub!
